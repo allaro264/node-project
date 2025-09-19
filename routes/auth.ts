@@ -10,7 +10,7 @@ import type { AuthenticatedRequest } from "../middleware/authentication";
 export const authRouter = async (req: IncomingMessage, res: ServerResponse) => {
     const { method, url} = req;
 
-    if (url === "auth/register" && method === HttpMethod.POST) {
+    if (url === "/auth/register" && method === HttpMethod.POST) {
         const body = await parseBody(req);
         const result = await safeParse(authSchema, body);
         if (result.issues) {
@@ -36,7 +36,7 @@ export const authRouter = async (req: IncomingMessage, res: ServerResponse) => {
             return;
         }
     }
-    if (url === "auth/login" && method === HttpMethod.POST) {
+    if (url === "/auth/login" && method === HttpMethod.POST) {
         const body = await parseBody(req);
         const result = safeParse(authSchema, body);
 
@@ -72,7 +72,7 @@ export const authRouter = async (req: IncomingMessage, res: ServerResponse) => {
         return;
     }
 
-    if(url === "auth/refresh" && method === HttpMethod.POST) {
+    if(url === "/auth/refresh" && method === HttpMethod.POST) {
         const token = req.headers["authorization"]?.split(" ")[1];
 
         if (token) {
