@@ -13,7 +13,7 @@ export const getAllCharacters = (): Character[] => {
     return Array.from(characters.values())
 }
 
-export const getChracterById = (id: number): Character | undefined => {
+export const getCharacterById = (id: number): Character | undefined => {
     return characters.get(id);
 }
 
